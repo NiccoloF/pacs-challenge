@@ -19,7 +19,7 @@ all: $(EXEC)
 
 clean:
 	rm -f $(EXEC) $(OBJS)
-
+	
 $(EXEC): $(OBJS)
 	g++ -o main $(OBJS)
 
