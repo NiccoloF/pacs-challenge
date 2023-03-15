@@ -5,6 +5,8 @@
 
 struct parameters
 {
+  std::string f = "0";
+  std::string df = "0";
   double time = 10;
   double N = 1e3;
   double y_0 = 0;

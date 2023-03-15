@@ -2,16 +2,17 @@
 #include <iostream>
 #include <cmath>
 
-#include "Solver.h"
+#include "Solver.hpp"
 #include "Getpot"
 #include "readparameters.hpp"
+#include "muParser_fun.hpp"
 
 double f(double time,double y);
 double df(double time,double y);
 
 int main(int argc,char** argv) {
 
-    GetPot c1("parameters.pot");
+    GetPot c1(argc,argv);
 
     bool verbose = c1.search(1,"-v");
     std::string filename = c1.follow("parameters.pot","-p");
@@ -20,12 +21,20 @@ int main(int argc,char** argv) {
 
     parameters param = readParam(filename,verbose);
 
-    const auto& [time,N,u0] = param;
+    const auto& [f,df,time,N,u0] = param;
 
-    const std::function<double(double,double)> f_ = f;
-    const std::function<double(double,double)> df_ = df;
+    std::cout << f <<std::endl;
+    std::cout << df <<std::endl;
+
+    muParser_fun f_(f);
+    muParser_fun df_(df);
+
+
+    //const std::function<double(double,double)> f_ = f;
+    //const std::function<double(double,double)> df_ = df;
 
     Solver solver(f_,df_,u0,time,N);
+
     auto result = solver.crankNicolson();
 
     std::cout << "Result file: result.dat" << std::endl;

@@ -2,9 +2,9 @@
 // Created by Niccolò Feresini on 11/03/23.
 //
 
-#include "Solver.h"
+#include "Solver.hpp"
 
-Solver::Solver(const function& f,const function& df,double u0 ,double T,unsigned int nSteps):m_f(f),m_df(df),m_u0(u0),
+Solver::Solver(const muParser_fun& f,const muParser_fun& df,double u0 ,double T,unsigned int nSteps):m_f(f),m_df(df),m_u0(u0),
                                                                                              m_T(T),m_nSteps(nSteps),m_h(T/nSteps) {};
 
 std::array<std::vector<double>,2> Solver::crankNicolson(double toll,double tola) const
@@ -30,6 +30,8 @@ std::array<std::vector<double>,2> Solver::crankNicolson(double toll,double tola)
         auto newtonZero = apsc::Newton(F,DF,result[1][countStep],toll,tola,m_nSteps);
 
         result[1][countStep+1] = std::get<0>(newtonZero);
+
+        //std::cout<<"newtonZero = "<<result[1][countStep+1]<<std::endl;
 
     }
     return result;
