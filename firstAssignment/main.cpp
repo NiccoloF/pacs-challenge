@@ -1,4 +1,6 @@
 
+// plot "result.dat" w p lw 2 title 'uh' , log(1-x**2/2)  lw 2 title 'u_ex'
+
 #include <iostream>
 #include <cmath>
 

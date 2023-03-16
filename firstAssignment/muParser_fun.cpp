@@ -4,8 +4,8 @@ muParser_fun::muParser_fun(const std::string& fun)
 {
   try
   {
-    muParser.DefineVar("t",&mt_value);
-    muParser.DefineVar("y",&my_value);
+    muParser.DefineVar("t",&(this->mt_value));
+    muParser.DefineVar("y",&(this->my_value));
     muParser.SetExpr(fun);
   }
   catch(mu::Parser::exception_type& e)
@@ -29,11 +29,11 @@ double muParser_fun::operator()(const double t_value,const double y_value)
 
   try
   {
-     double a = t_value;
-     double b = y_value;
+    // double a = t_value;
+    // double b = y_value;
 
-     muParser.DefineVar("t",&a);
-     muParser.DefineVar("y",&b);
+     //muParser.DefineVar("t",&(this->mt_value));
+     //muParser.DefineVar("y",&(this->my_value));
      //std::cout<<"mtvalue = "<<mt_value<<std::endl;
      //std::cout<<"x = "<<muParser.Eval()<<std::endl;
      x = muParser.Eval();
