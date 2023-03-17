@@ -10,6 +10,7 @@ struct parameters
   double time = 10;
   double N = 1e3;
   double y_0 = 0;
+  double theta = 1/2;
 };
 
 std::ostream& operator<<(std::ostream& out,const parameters&);

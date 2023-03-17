@@ -9,39 +9,34 @@
 #include "readparameters.hpp"
 #include "muParser_fun.hpp"
 
-double f(double time,double y);
-double df(double time,double y);
-
 int main(int argc,char** argv) {
-
+    
     GetPot c1(argc,argv);
-
+    /*
+      -v : show a list of parameters 
+      -p : specify the file name 
+    */
     bool verbose = c1.search(1,"-v");
     std::string filename = c1.follow("parameters.pot","-p");
 
     std::cout<<"reading file from "<<filename<<std::endl;
 
+    // read parameter from filename and store the result in the parameters class 
     parameters param = readParam(filename,verbose);
+   
+    const auto& [f,df,time,N,u0,theta] = param;
 
-    const auto& [f,df,time,N,u0] = param;
-
-    std::cout << f <<std::endl;
-    std::cout << df <<std::endl;
-
+    // initialize a muparser object 
     muParser_fun f_(f);
     muParser_fun df_(df);
 
+    Solver solver(f_,df_,u0,time,N,theta);
+    auto result = solver.theta_method();
 
-    //const std::function<double(double,double)> f_ = f;
-    //const std::function<double(double,double)> df_ = df;
-
-    Solver solver(f_,df_,u0,time,N);
-
-    auto result = solver.crankNicolson();
-
+    // write the result in ../result.dat 
     std::cout << "Result file: result.dat" << std::endl;
-    std::ofstream of("result.dat");
-    of << "#TIME\tU_H"<<"\n";
+    std::ofstream of("../result.dat");
+    of << "#TIME\t\tU_H"<<"\n";
 
     for(size_t i = 0;i<result[0].size();++i)
     {
@@ -52,20 +47,5 @@ int main(int argc,char** argv) {
 
     of.close();
     return 0;
-    /*
-    for(int i = 0;i<result[0].size();++i)
-    {
-      std::cout << result[0][i]<<"   "<<result[1][i]<<std::endl;
-    }
-    return 0;
-    */
 }
 
-double f(double time,double y)
-{
-  return -1 * time *exp(-1 * y);
-}
-double df(double time,double y)
-{
-  return time *exp(-1 * y);
-}

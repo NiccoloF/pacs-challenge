@@ -14,3 +14,6 @@
 [initial_condition]
 	y_0 = 0
 	[../]
+[theta]
+	theta=0.5
+	[../]

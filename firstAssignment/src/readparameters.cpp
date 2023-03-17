@@ -5,7 +5,8 @@ parameters readParam(const std::string& filename,bool verbose)
 {
   // Parameter default constructor fills it with the defaults values
   parameters defaults;
-  // checks if file exixts and is readable
+
+  // checks if the file exists and is readable
   std::ifstream check(filename);
   if(!check)
     {
@@ -20,10 +21,8 @@ parameters readParam(const std::string& filename,bool verbose)
   else
     check.close();
 
-  /*
-    read parameters from a getpot file
-  */
-
+  
+  //read parameters from a getpot file
   GetPot ifile(filename.c_str());
   parameters values;
   values.f = ifile("function/f",defaults.f);
@@ -31,17 +30,10 @@ parameters readParam(const std::string& filename,bool verbose)
   values.time = ifile("time/T",defaults.time);
   values.N = ifile("steps/N",defaults.N);
   values.y_0 = ifile("initial_condition/y_0",defaults.y_0);
-
+  values.theta = ifile("theta/theta",0.5);
 
   if(verbose)
-  {
-    std::cout << "PARAMETER VALUES IN GETPOT FILE"
-              << "\n";
-    ifile.print();
-    std::cout << std::endl;
-    std::cout << "ACTUAL VALUES"
-              << "\n"
-              << values;
-  }
+    std::cout<<values<<std::endl;
+
   return values;
 }

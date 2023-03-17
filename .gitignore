@@ -1,0 +1,10 @@
+# Ignora i file di sistema Mac
+.DS_store
+
+# ignora script bash per plottare
+plot.sh
+
+# ignora l'output del programma 
+result.dat
+
+.vscode/
