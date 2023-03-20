@@ -2,7 +2,7 @@
  
 CXX ?= g++
 
-CXXFLAGS += -std=c++20 -Wall -Wextra -I../Include/ -I../Include/muParser/
+CXXFLAGS += -std=c++20 -DCONVERGENCE_RATE=7 -Wall -Wextra -I../Include/ -I../Include/muParser/
 
 LDFLAGS += -Wl,-rpath=../../../Examples/lib  # you should change these paths with your local paths 								    to link against muparser library
 LDLIBS += -L../../../Examples/lib -lmuparser # to link against muparser library
@@ -16,9 +16,6 @@ SRCS := $(wildcard *.cpp)
 # get the corresponding object file
 OBJS := $(SRCS:.cpp=.o)
 
-# get all headers in the working directory
-HEADERS := $(wildcard *.hpp)
-
 # build the executable 
 exe_sources = $(filter main%.cpp,$(SRCS))
 EXEC = $(exe_sources:.cpp=)
@@ -30,7 +27,7 @@ EXEC = $(exe_sources:.cpp=)
 .DEFAULT_GOAL = all
 
 clean:
-	$(RM) $(EXEC) $(OBJS)
+	$(RM) $(EXEC) $(OBJS) ../result.dat ../error_rate.dat
 	
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) $< -c

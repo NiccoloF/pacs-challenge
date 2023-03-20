@@ -1,10 +1,17 @@
-# Ignora i file di sistema Mac
+# Ignore file system
 .DS_store
 
-# ignora script bash per plottare
+# ignora bash script to plot using gnuplote
 plot.sh
 
-# ignora l'output del programma 
+# ignore data files 
 result.dat
+error_rate.dat
+
+#ignore object files
+*.o
+
+#ignore executable
+main
 
 .vscode/

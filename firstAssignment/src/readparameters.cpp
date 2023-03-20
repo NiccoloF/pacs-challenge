@@ -27,6 +27,7 @@ parameters readParam(const std::string& filename,bool verbose)
   parameters values;
   values.f = ifile("function/f",defaults.f);
   values.df = ifile("function/df",defaults.df);
+  values.uex = ifile("exact_solution/uex",defaults.uex);
   values.time = ifile("time/T",defaults.time);
   values.N = ifile("steps/N",defaults.N);
   values.y_0 = ifile("initial_condition/y_0",defaults.y_0);

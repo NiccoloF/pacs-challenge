@@ -1,9 +1,12 @@
 #--------------------------------------------------
-# Data File For CrankNicolson Method
+# Data File For Theta-Method
 #--------------------------------------------------
 [function]
 	f=-t*exp(-y)
 	df=t*exp(-y)
+	[../]
+[exact_solution]
+	uex=log(1-(t^2)/2)
 	[../]
 [time]
 	T = 1

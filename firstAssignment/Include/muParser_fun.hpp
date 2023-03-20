@@ -10,8 +10,8 @@ public:
   double operator()(const double t_value,const double y_value);
 
 private:
-  double my_value ;
-  double mt_value ;
+  double my_value;
+  double mt_value;
   mu::Parser muParser;
 };
 
