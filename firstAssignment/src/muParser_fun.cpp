@@ -29,11 +29,13 @@ double muParser_fun::operator()(const double t_value,const double y_value)
 
   try
   { 
+    ///////////////////////////// 
+    // completely useless but, if deleted, sometimes muParser gives me wrong results
     double a = t_value;
     double b = y_value;
     muParser.DefineVar("t",&a);
     muParser.DefineVar("y",&b);
-
+    ///////////////////////////////
     
     x = muParser.Eval();
      

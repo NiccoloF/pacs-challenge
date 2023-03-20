@@ -1,7 +1,7 @@
 # Ignore file system
 .DS_store
 
-# ignora bash script to plot using gnuplote
+# ignora bash script to plot using gnuplot
 plot.sh
 
 # ignore data files 
