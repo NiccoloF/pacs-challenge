@@ -1,0 +1,28 @@
+[solver]
+  # function to parse
+  f = 0.5-exp(_pi*x)
+
+  # [a,b] is the interval in which you want to find the zero
+  a = -1
+  b = 1
+
+  # tollerance
+  tol = 1e-4
+
+  # maximum number of iterations
+  max_it = 150
+
+  [../]
+
+[secant]
+  # tol_a
+  tol_a = 1.e-10
+
+  [../]
+
+[newton]
+  # tol_a
+  tol_a = 1.e-10
+
+  # used in the derivative approximation
+  h = 1.e-4
