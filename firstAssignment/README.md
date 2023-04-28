@@ -15,12 +15,12 @@ Here you can find:
 
 ## HOW TO COMPILE
 
-- In order to compile and run the code: 
->- Go into the ```src/``` directory
->- Installing muParser library,
->- In the **Makefile**, you should change the variables LDFLAGS and LDLIBS adding your local path.
->- set your parameters in **parameters.pot**
->- Run ```Make```
+- In order to ```compile``` and run the code: 
+    - Go into ```src/``` directory
+    - Installing ***muParser**** library,
+    - In the **Makefile**, you should change the variables LDFLAGS and LDLIBS adding your local path.
+    - set your parameters in **parameters.pot**
+    - Run ```Make```
 
 ### ADDITIONAL FLAGS
 
